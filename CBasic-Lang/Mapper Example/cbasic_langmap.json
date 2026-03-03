@@ -1,0 +1,67 @@
+{
+	"version": "0.0.1",
+	"dependencies": [
+		"cbstd.h"
+	],
+	"keywords": [
+		"MAIN_DECL_BEGIN", "MAIN_DECL_END", "global", "local", "function", "return", "new", "ptr", "deref", "ref", "self", "begin", "end", "while", "for"
+	],
+	"data_types": [
+		{
+			"cbasic": "i64",
+			"cpp":    "i64"
+		},
+		{
+			"cbasic": "i32",
+			"cpp":    "i32"
+		},
+		{
+			"cbasic": "i16",
+			"cpp": 	  "i16"
+		},
+		{
+			"cbasic": "i8",
+			"cpp":    "i8"
+		},
+		{
+			"cbasic": "u64",
+			"cpp":    "u64"
+		},
+		{
+			"cbasic": "u32",
+			"cpp":    "u32"
+		},
+		{
+			"cbasic": "u16",
+			"cpp":    "u16"
+		},
+		{
+			"cbasic": "u8",
+			"cpp":    "u8"
+		},
+		{
+			"cbasic": "f64",
+			"cpp":    "f64"
+		},
+		{
+			"cbasic": "f32",
+			"cpp":    "f32"
+		},
+		{
+			"cbasic": "string",
+			"cpp":    "cb_string"
+		},
+		{
+			"cbasic": "int",
+			"cpp":    "int"
+		},
+		{
+			"cbasic": "float",
+			"cpp":    "float"
+		},
+		{
+			"cbasic": "char",
+			"cpp":    "char"
+		}
+	]
+}

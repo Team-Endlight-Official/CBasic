@@ -43,7 +43,8 @@ internal sealed class Program
                 CLI.WriteLn("- clear: Clear the console.");
                 CLI.WriteLn("- exit: Exit the CLI.");
             }
-            else if (input.Equals("clear", StringComparison.OrdinalIgnoreCase))
+            else if ((input.Equals("clear", StringComparison.OrdinalIgnoreCase)) ||
+                    (input.Equals("cls", StringComparison.OrdinalIgnoreCase)))
             {
                 CLI.Clear();
                 CLI.WriteLn($"CBasic CLI v{CLI.Version}");
@@ -52,11 +53,48 @@ internal sealed class Program
             {
                 ParseTestNew();
             }
+            else if (input.Equals("map", StringComparison.OrdinalIgnoreCase))
+            {
+                TestLanguageMapper();
+            }
             else
             {
                 CLI.ForegroundColor = ConsoleColor.DarkRed;
                 CLI.WriteLn($"Unknown command: {input}");
                 CLI.ResetColors();
+            }
+
+            CLI.CursorVisible = true;
+        }
+    }
+
+    static void TestLanguageMapper()
+    {
+        LangMapper mapper = new LangMapper("C:\\Users\\jakub\\Documents\\Code Projects\\CBasic\\CBasic-Lang\\Mapper Example\\cbasic_langmap.json");
+
+        CLI.WriteLn("Testing Parsing!");
+
+        while (true)
+        {
+            string input = CLI.ReadLn();
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                continue;
+            }
+
+            if (input.Equals(":esc", StringComparison.OrdinalIgnoreCase))
+            {
+                CLI.WriteLn("Testing Parsing Ended!\n");
+                break;
+            }
+            else if (input.Contains(":pcbtoc", StringComparison.OrdinalIgnoreCase))
+            {
+                CLI.WriteLn("Parse CBasic Type to C++");
+                string wishedType = input.Remove(0, ":pcbtoc".Length);
+
+                string outType = mapper.EvaluateCBasicToCpp(wishedType);
+                CLI.WriteLn($"Your input: {wishedType}, has been evaluated to the C++ type: {outType} !");
             }
 
             CLI.CursorVisible = true;
